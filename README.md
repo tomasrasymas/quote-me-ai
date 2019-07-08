@@ -16,3 +16,10 @@ Quote Me AI is quotes generating bot whose the only purpose is to generate uniqu
 
 ## Workflow diagram
 ![alt text](docs/workflow.png "Workflow")
+
+## How to use
+* Install libraries `pip install -r requirements.txt`
+* Rename `config_tempalte.py` into `config,py` and fill unsplash and facebook and Google Drive API keys.
+* Use `Quote_model_train.ipynb` to train GPT-2 model.
+* Copy trained checkpoint to root path.
+* Execute `python quote_me_ai.py`

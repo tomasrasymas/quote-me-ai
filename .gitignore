@@ -1,0 +1,8 @@
+.idea/
+__pycache__/
+*.pyc
+.DS_Store
+checkpoint/
+config.py
+log/
+quotes_images/

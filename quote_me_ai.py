@@ -13,7 +13,7 @@ import time
 config = get_config()
 
 
-class QuoteMe(LoggerMixin):
+class QuoteMeAI(LoggerMixin):
     def __init__(self, max_quote_length):
         super().__init__()
 
@@ -86,5 +86,5 @@ class QuoteMe(LoggerMixin):
 
 
 if __name__ == '__main__':
-    q = QuoteMe(max_quote_length=config.MAX_QUOTE_TEXT_LENGTH)
+    q = QuoteMeAI(max_quote_length=config.MAX_QUOTE_TEXT_LENGTH)
     q.run()

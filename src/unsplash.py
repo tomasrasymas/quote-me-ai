@@ -18,6 +18,6 @@ class Unsplash:
             if entry.link_download and description:
                 photographer_text = '''Photo by %s?utm_source=%s&utm_medium=referral %s on https://unsplash.com/?utm_source=%s&utm_medium=referral''' % (entry.body['user']['links']['html'], self.app_name, entry.body['user']['name'], self.app_name)
 
-                photos.append((entry.link_download, entry.body['description'], photographer_text))
+                photos.append((entry.link_download_location, entry.body['description'], photographer_text))
 
         return photos

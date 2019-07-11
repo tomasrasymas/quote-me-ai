@@ -18,15 +18,20 @@ class Unsplash:
                 break
 
             description = entry.body.get('description', None)
+            photo_url = entry.body.get('urls', None)
+            if photo_url:
+                photo_url = photo_url.get('regular', None)
 
-            if entry.link_download_location and description:
+            if entry.link_download_location and description and photo_url:
                 photographer_text = '''Photo by %s?utm_source=%s&utm_medium=referral %s on https://unsplash.com/?utm_source=%s&utm_medium=referral''' % (entry.body['user']['links']['html'], self.app_name, entry.body['user']['name'], self.app_name)
 
-                photos.append(('%s?client_id=%s' % (entry.link_download_location, config.UNSPLASH_API_KEY), entry.body['description'], photographer_text))
+                photos.append(('%s?client_id=%s' % (entry.link_download_location, config.UNSPLASH_API_KEY),
+                               photo_url,
+                               description,
+                               photographer_text))
 
         return photos
 
     @staticmethod
-    def get_image_download_url(url):
+    def trigger_download(url):
         response = requests.get(url=url)
-        return response.json()['url']

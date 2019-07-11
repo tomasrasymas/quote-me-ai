@@ -24,16 +24,15 @@ class QuoteMeAI(LoggerMixin):
         self.fb = FacebookPost(access_token=config.FACEBOOK_ACCESS_TOKEN)
 
     def get_best_photo(self, photos, quote_vector):
-        photos_vectors = [self.similarity.get_vector(p[1]) for p in photos]
+        photos_vectors = [self.similarity.get_vector(p[2]) for p in photos]
         photos_vectors = list(filter(lambda v: v is not None, photos_vectors))
 
         photos_scores = self.similarity.similarity(quote_vector,
                                                    np.array(photos_vectors))
 
         photo_id = np.argmin(photos_scores)
-        tmp_photo = list(photos[photo_id])
-        tmp_photo[0] = Unsplash.get_image_download_url(tmp_photo[0])
-        return tuple(tmp_photo)
+        Unsplash.trigger_download(photos[photo_id][0])
+        return photos[photo_id]
 
     def clean_quote(self, quote):
         quote = quote.replace('<|startoftext|>', '').replace('<|endoftext|>', '')
@@ -69,11 +68,11 @@ class QuoteMeAI(LoggerMixin):
                                             quote_vector=quote_vector)
                 self.logger.info(photo)
 
-                image = Image(url=photo[0])
+                image = Image(url=photo[1])
                 image.draw_text(text=quote)
                 image_file_path = image.save(file_path=config.QUOTES_IMAGES_PATH)
 
-                self.fb.post(text=photo[2],
+                self.fb.post(text=photo[3],
                              image_path=image_file_path)
 
                 self.logger.info('Posted to FB!')

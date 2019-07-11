@@ -31,7 +31,9 @@ class QuoteMeAI(LoggerMixin):
                                                    np.array(photos_vectors))
 
         photo_id = np.argmin(photos_scores)
-        return photos[photo_id]
+        tmp_photo = list(photos[photo_id])
+        tmp_photo[0] = Unsplash.get_image_download_url(tmp_photo[0])
+        return tuple(tmp_photo)
 
     def clean_quote(self, quote):
         quote = quote.replace('<|startoftext|>', '').replace('<|endoftext|>', '')

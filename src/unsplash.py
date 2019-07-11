@@ -1,4 +1,8 @@
 from pyunsplash import PyUnsplash
+from config import get_config
+import requests
+
+config = get_config()
 
 
 class Unsplash:
@@ -15,9 +19,14 @@ class Unsplash:
 
             description = entry.body.get('description', None)
 
-            if entry.link_download and description:
+            if entry.link_download_location and description:
                 photographer_text = '''Photo by %s?utm_source=%s&utm_medium=referral %s on https://unsplash.com/?utm_source=%s&utm_medium=referral''' % (entry.body['user']['links']['html'], self.app_name, entry.body['user']['name'], self.app_name)
 
-                photos.append((entry.link_download_location, entry.body['description'], photographer_text))
+                photos.append(('%s?client_id=%s' % (entry.link_download_location, config.UNSPLASH_API_KEY), entry.body['description'], photographer_text))
 
         return photos
+
+    @staticmethod
+    def get_image_download_url(url):
+        response = requests.get(url=url)
+        return response.json()['url']

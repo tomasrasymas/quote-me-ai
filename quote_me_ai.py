@@ -78,7 +78,7 @@ class QuoteMeAI(LoggerMixin):
                 image.draw_text(text=quote)
                 image_file_path = image.save(file_path=config.QUOTES_IMAGES_PATH)
 
-                self.reddit.post(text=photo[3],
+                self.reddit.post(text='<...>%s<...> %s, %s' % (quote, '\n', photo[3]),
                                  image_path=image_file_path)
 
                 self.logger.info('Posted to reddit!')

@@ -3,7 +3,7 @@ from src.similarity import Similarity
 from src.unsplash import Unsplash
 from src.image import Image
 from config import get_config
-from src.facebook_post import FacebookPost
+from src.reddit_post import RedditPost
 from src.logger_mixin import LoggerMixin
 import numpy as np
 import traceback
@@ -21,7 +21,13 @@ class QuoteMeAI(LoggerMixin):
         self.similarity = Similarity()
         self.unsplash = Unsplash(api_key=config.UNSPLASH_API_KEY)
         self.max_quote_length = max_quote_length
-        self.fb = FacebookPost(access_token=config.FACEBOOK_ACCESS_TOKEN)
+        self.reddit = RedditPost(
+            subreddit=config.REDDIT_SUBREDDIT,
+            client_id=config.REDDIT_CLIENT_ID,
+            client_secret=config.REDDIT_CLIENT_SECRET,
+            password=config.REDDIT_PASSWORD,
+            user_agent=config.REDDIT_USER_AGENT,
+            username=config.REDDIT_USERNAME)
 
     def get_best_photo(self, photos, quote_vector):
         photos_vectors = [self.similarity.get_vector(p[2]) for p in photos]
@@ -72,8 +78,8 @@ class QuoteMeAI(LoggerMixin):
                 image.draw_text(text=quote)
                 image_file_path = image.save(file_path=config.QUOTES_IMAGES_PATH)
 
-                self.fb.post(text=photo[3],
-                             image_path=image_file_path)
+                self.reddit.post(text=photo[3],
+                                 image_path=image_file_path)
 
                 self.logger.info('Posted to FB!')
 

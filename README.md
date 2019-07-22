@@ -1,6 +1,6 @@
 # Quote Me AI
 
-Quote Me AI is quotes generating bot whose the only purpose is to generate unique quotes. Generated quotes are drawn onto the image and posted to facebook page [Quote Me AI facebook page](https://www.facebook.com/quotemeai).
+Quote Me AI is quotes generating bot whose the only purpose is to generate unique quotes. Generated quotes are drawn onto the image and posted to subreddit [Quote Me AI facebook page](https://www.reddit.com/r/QuoteMeAI/).
 
 ## Samples
 
@@ -12,7 +12,7 @@ Quote Me AI is quotes generating bot whose the only purpose is to generate uniqu
 * GPT-2-simple - text generation
 * Unsplash API - photos search
 * spacy - NLP tasks (word embeddings, similarity search)
-* Facebook SDK - posting quotes images to Facebook page
+* prow - posting quotes images to subreddit
 
 ## Workflow diagram
 ![alt text](docs/workflow.png "Workflow")

@@ -9,7 +9,6 @@ certifi==2019.6.16
 chardet==3.0.4
 cymem==2.0.2
 docutils==0.14
--e git+https://github.com/mobolic/facebook-sdk.git@65ff582e77f7ed68b6e9643a7490e5dee2a1031b#egg=facebook_sdk
 gast==0.2.2
 google-pasta==0.1.7
 gpt-2-simple==0.5.3

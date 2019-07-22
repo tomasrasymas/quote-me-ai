@@ -1,6 +1,6 @@
 # Quote Me AI
 
-Quote Me AI is quotes generating bot whose the only purpose is to generate unique quotes. Generated quotes are drawn onto the image and posted to subreddit [Quote Me AI facebook page](https://www.reddit.com/r/QuoteMeAI/).
+Quote Me AI is quotes generating bot whose the only purpose is to generate unique quotes. Generated quotes are drawn onto the image and posted to subreddit [Quote Me AI subreddit](https://www.reddit.com/r/QuoteMeAI/).
 
 ## Samples
 

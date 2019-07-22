@@ -81,7 +81,7 @@ class QuoteMeAI(LoggerMixin):
                 self.reddit.post(text=photo[3],
                                  image_path=image_file_path)
 
-                self.logger.info('Posted to FB!')
+                self.logger.info('Posted to reddit!')
 
                 time.sleep(config.GENERATION_TIMEOUT)
             except KeyboardInterrupt:

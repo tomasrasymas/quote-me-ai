@@ -6,6 +6,7 @@ from config import get_config
 from src.reddit_post import RedditPost
 from src.logger_mixin import LoggerMixin
 import numpy as np
+import re
 import traceback
 import time
 
@@ -42,6 +43,7 @@ class QuoteMeAI(LoggerMixin):
 
     def clean_quote(self, quote):
         quote = quote.replace('<|startoftext|>', '').replace('<|endoftext|>', '')
+        quote = re.sub('<\|end\w*[|>]*$', '', quote)
         return quote
 
     def run(self):

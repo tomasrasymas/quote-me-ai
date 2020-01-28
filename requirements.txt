@@ -40,7 +40,7 @@ smart-open==1.8.4
 spacy==2.1.4
 srsly==0.0.7
 tensorboard==1.14.0
-tensorflow==1.14.0
+tensorflow==1.15.2
 tensorflow-estimator==1.14.0
 termcolor==1.1.0
 thinc==7.0.4

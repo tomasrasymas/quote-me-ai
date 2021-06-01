@@ -47,7 +47,7 @@ thinc==7.0.4
 toposort==1.5
 tqdm==4.32.2
 update-checker==0.16
-urllib3==1.25.3
+urllib3==1.26.5
 wasabi==0.2.2
 websocket-client==0.56.0
 Werkzeug==0.15.4

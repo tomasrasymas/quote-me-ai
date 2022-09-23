@@ -27,7 +27,7 @@ plac==0.9.6
 praw==6.3.1
 prawcore==1.0.1
 preshed==2.0.1
-protobuf==3.8.0
+protobuf==3.18.3
 pyrsistent==0.15.2
 python-dateutil==2.8.0
 pyunsplash==1.0.0b8
